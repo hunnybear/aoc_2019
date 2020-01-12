@@ -13,11 +13,6 @@ TESTS = {
 
 PART_2_TARGET = 19690720
 
-
-def _stop_operation(a, b):
-    raise Operation99('code 99 reached')
-
-
 operations = {
     1: lambda a, b: a + b,
     2: lambda a, b: a * b,
@@ -41,7 +36,6 @@ def run(parsed, a=None, b=None):
 
         res = operations[program[position]](program[program[position + 1]], program[program[position + 2]])
         program[program[position + 3]] = res
-        #print(program)
 
         position += 4
 
@@ -70,7 +64,6 @@ def main():
 
         print('part 10:\n')
         result = None
-        #print(second_part(parsed))
         for a in range(100):
             for b in range(100):
                 res = run(copy.copy(parsed), a, b)
@@ -83,12 +76,6 @@ def main():
 
         print(result)
 
-
-class Operation99(Exception):
-    """
-    I feel like I should document this.
-    """
-    pass
 
 if __name__ == '__main__':
     main()
